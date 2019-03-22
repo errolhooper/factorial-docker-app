@@ -10,7 +10,20 @@ def factorial(n):
 
 @app.route("/<n>")
 def hello(n):
-    return str(factorial(int(n)))
+    response = {
+    "input": 0,
+    "output": 0
+    }
+
+    fact_output = str(factorial(int(n)))
+    response["input"] = n
+    response["output"] = fact_output 
+
+    # convert into JSON:
+    json_response = json.dumps(response)
+
+    # the result is a JSON string:
+    return json_response
 
 
 if __name__ == "__main__":
